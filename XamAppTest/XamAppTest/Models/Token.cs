@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace XamAppTest.Models
 {
-    class Token
+    public class Token
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

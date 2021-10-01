@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XamAppTest.Models
 {
-    class Register
+    public class Register
     {
 
         public string Name { get; set; }

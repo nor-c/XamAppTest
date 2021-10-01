@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using XamAppTest.Models;
@@ -9,7 +10,7 @@ using Xamarin.Essentials;
 
 namespace XamAppTest.Services
 {
-    class ApiService
+    public class ApiService
     {
         public static async Task<bool> RegisterUser(string name, string email, string password)
         {
@@ -56,6 +57,14 @@ namespace XamAppTest.Services
             Preferences.Set("userName", result.UserName);
             Preferences.Set("tokenExpirationTime", result.ExpirationTime);
             return true;
+        }
+
+        public static async Task<List<Product>> GetProduct()
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+            var response = await httpClient.GetStringAsync(AppSettings.ApiUrl + "api/products/trendingproducts");
+            return JsonConvert.DeserializeObject<List<Product>>(response);
         }
     }
 }

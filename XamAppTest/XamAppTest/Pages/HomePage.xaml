@@ -5,19 +5,64 @@
              x:Class="XamAppTest.Pages.HomePage">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout >
-                <Image Source="logout.png"
+                <StackLayout>
+                    <StackLayout >
+                        <Image Source="logout.png"
                        Margin="15"
                        HeightRequest="30"
                        WidthRequest="30" 
                        HorizontalOptions="EndAndExpand"/>
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_OnTapped"/>
-                </StackLayout.GestureRecognizers>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_OnTapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Label Margin="15"
+                           Text="Products"
+                           HorizontalTextAlignment="Center"
+                           FontFamily="Lobster"
+                           FontAttributes="Bold, Italic"
+                           FontSize="40"
+                           TextColor="#FA5400"/>
+                    <StackLayout>
+                        <CollectionView  x:Name="CvProducts"
+                                         SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame Padding="0"
+                                                   BackgroundColor="Transparent"
+                                                   Margin="15"
+                                                   HasShadow="True">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Frame Padding="5"
+                                                           CornerRadius="20"
+                                                           IsClippedToBounds="True"
+                                                           HeightRequest="120"
+                                                           WidthRequest="120"
+                                                           HorizontalOptions="Center">
+                                                    <Image Aspect="AspectFit"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="FillAndExpand"
+                                                               Source="{Binding FullImageUrl}"/>
+                                                </Frame>
+                                                <Grid>
+                                                    <Label TextColor="#2C2C2C"
+                                                           VerticalTextAlignment="Center"
+                                                           FontFamily="Lobster"
+                                                           FontSize="Large" 
+                                                           Text="{Binding Name}"/>
+                                                    <Label TextColor="#984D0D"
+                                                           VerticalOptions="End"
+                                                           Text="{Binding Price, StringFormat='Price: € {0}'}"/>
+                                            </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                   VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
