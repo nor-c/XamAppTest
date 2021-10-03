@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="XamAppTest.Pages.ProfilePage">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" 
+               Source="background" 
+               VerticalOptions="Start" 
+               Margin="5"/>
+
+        <StackLayout Grid.Row="0" BackgroundColor="Transparent" VerticalOptions="End" HorizontalOptions="Center">
+            <Frame CornerRadius="40" 
+                   HeightRequest="280" 
+                   Margin="5"
+                   xct:ShadowEffect.Color="#1F1F1F" xct:ShadowEffect.OffsetX="-5" xct:ShadowEffect.OffsetY="-25">
+
+                <Grid Padding="15,10,15,40" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource StlContactBtn}" HorizontalOptions="End"   ImageSource="phone"/>
+                    <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource StlContactBtn}" HorizontalOptions="Start" ImageSource="mail"/>
+
+                    <Label x:Name="LblUserName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Name}" FontAttributes="Bold" FontSize="30"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Address: " FontAttributes="Bold" />
+                                <Span Text=" Sample Address"  />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Email: " FontAttributes="Bold" />
+                                <Span Text=" sample@email.com"  />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="3" Grid.Column="0" Text="In Cart" Style="{StaticResource StlOrderTitle}" />
+                    <Label Grid.Row="4" Grid.Column="0" Text="2" Style="{StaticResource StlOrderDesc}"/>
+
+                    <Label Grid.Row="3" Grid.Column="1" Text="Orders" Style="{StaticResource StlOrderTitle}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="4" Style="{StaticResource StlOrderDesc}"/>
+
+                    <Label Grid.Row="3" Grid.Column="2" Text="Total Spent" Style="{StaticResource StlOrderTitle}"/>
+                    <Label Grid.Row="4" Grid.Column="2" Text="5k" Style="{StaticResource StlOrderDesc}"/>
+                    <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White" BackgroundColor="#2195f2" 
+                            Text="Edit" Margin="0,20,0,0" 
+                            FontAttributes="Bold" 
+                            FontSize="17" 
+                            HeightRequest="45" 
+                            CornerRadius="20"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

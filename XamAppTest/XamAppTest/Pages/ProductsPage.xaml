@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="XamAppTest.Pages.ProductsPage">
+    <ContentPage.Content>
+
+        <StackLayout>
+            <StackLayout BackgroundColor="#F1F1F1">
+                <StackLayout>
+                    <Label xct:ShadowEffect.Color="Orange" xct:ShadowEffect.OffsetX="10" xct:ShadowEffect.OffsetY="15" 
+                           Text="------   Furniture   ------"
+                           HorizontalTextAlignment="Center"
+                           FontFamily="Lobster"
+                           FontAttributes="Bold, Italic"
+                           FontSize="30"
+                           TextColor="#C44200"/>
+                    <CollectionView  x:Name="CvProducts"
+                                     SelectionMode="Single"
+                                     BackgroundColor="#F1F1F1" Margin="5,0">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"
+                                                 Span="2"
+                                                 VerticalItemSpacing="0"
+                                                 HorizontalItemSpacing="0" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="#F1F1F1" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Frame Padding="0" CornerRadius="20" xct:ShadowEffect.Color="#464545" xct:ShadowEffect.OffsetX="2" xct:ShadowEffect.OffsetY="5" 
+                                               BackgroundColor="Transparent"
+                                               Margin="5"
+                                               HasShadow="True">
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="#FAFAF9">
+                                            <Frame Padding="5" 
+                                                   BackgroundColor="#FAFAF9"
+                                                           CornerRadius="20"
+                                                           IsClippedToBounds="True"
+                                                           HeightRequest="100"
+                                                           WidthRequest="100"
+                                                           HorizontalOptions="Center">
+                                                <Image Aspect="AspectFit"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               VerticalOptions="FillAndExpand"
+                                                               Source="{Binding FullImageUrl}"/>
+                                            </Frame>
+                                            <Grid>
+                                                <Label TextColor="#888888"
+                                                           VerticalTextAlignment="Center"
+                                                           FontFamily="Lobster"
+                                                           FontSize="Medium" 
+                                                           Text="{Binding Name}"/>
+                                                <Label TextColor="#984D0D"
+                                                           VerticalOptions="End"
+                                                           FontSize="12"
+                                                           Text="{Binding Price, StringFormat='Price: € {0}'}"/>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,68 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="XamAppTest.Pages.HomePage">
-    <ContentPage.Content>
-        <StackLayout>
-                <StackLayout>
-                    <StackLayout >
-                        <Image Source="logout.png"
-                       Margin="15"
-                       HeightRequest="30"
-                       WidthRequest="30" 
-                       HorizontalOptions="EndAndExpand"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapLogout" Tapped="TapLogout_OnTapped"/>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    <Label Margin="15"
-                           Text="Products"
-                           HorizontalTextAlignment="Center"
-                           FontFamily="Lobster"
-                           FontAttributes="Bold, Italic"
-                           FontSize="40"
-                           TextColor="#FA5400"/>
-                    <StackLayout>
-                        <CollectionView  x:Name="CvProducts"
-                                         SelectionMode="Single">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Frame Padding="0"
-                                                   BackgroundColor="Transparent"
-                                                   Margin="15"
-                                                   HasShadow="True">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Frame Padding="5"
-                                                           CornerRadius="20"
-                                                           IsClippedToBounds="True"
-                                                           HeightRequest="120"
-                                                           WidthRequest="120"
-                                                           HorizontalOptions="Center">
-                                                    <Image Aspect="AspectFit"
-                                                               HorizontalOptions="StartAndExpand"
-                                                               VerticalOptions="FillAndExpand"
-                                                               Source="{Binding FullImageUrl}"/>
-                                                </Frame>
-                                                <Grid>
-                                                    <Label TextColor="#2C2C2C"
-                                                           VerticalTextAlignment="Center"
-                                                           FontFamily="Lobster"
-                                                           FontSize="Large" 
-                                                           Text="{Binding Name}"/>
-                                                    <Label TextColor="#984D0D"
-                                                           VerticalOptions="End"
-                                                           Text="{Binding Price, StringFormat='Price: € {0}'}"/>
-                                            </Grid>
-                                            </StackLayout>
-                                        </Frame>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:XamAppTest.Pages;assembly=XamAppTest"
+            xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+            x:Class="XamAppTest.Pages.HomePage">
+
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem IconImageSource="logoutWhite.png" Clicked="ClickLogout_Clicked">
+        </ToolbarItem >
+    </TabbedPage.ToolbarItems>
+    <local:ProfilePage IconImageSource="user.png"/>
+    <local:ProductsPage IconImageSource="sofa.png" />
+    
+
+</TabbedPage>
